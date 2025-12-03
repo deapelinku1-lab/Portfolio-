@@ -37,6 +37,11 @@
         html {
             scroll-padding-top: 80px;
         }
+
+        /* Prevent scrolling when modal is open */
+        body.modal-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 selection:bg-blue-200">
@@ -254,54 +259,107 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-20 px-6 md:px-12 lg:px-24 bg-white">
-        <div class="max-w-6xl mx-auto">
+        <div class="max-w-7xl mx-auto">
             <div class="mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Experience & Highlights</h2>
-                <p class="text-slate-600">Selected works and career milestones.</p>
+                <p class="text-slate-600">Selected works and career milestones. <span class="text-blue-600 text-sm font-medium ml-2">(Click cards for details)</span></p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 group">
-                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
-                        <i data-lucide="layout" class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1: Pulse Digital -->
+                <div onclick="openModal('pulse')" class="cursor-pointer group flex flex-col bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" alt="Pulse Digital Creative Agency" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium flex items-center gap-2">
+                                <i data-lucide="plus-circle" class="w-5 h-5"></i> View Project Details
+                            </span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Pulse Digital</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">Founded and managed a creative agency focused on helping brands establish their digital presence.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">Founder</span>
-                        <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">Agency Management</span>
-                        <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">Branding</span>
+                    
+                    <div class="p-8 flex-grow flex flex-col">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <span class="text-blue-600 text-xs font-bold uppercase tracking-wider mb-2 block">Creative Agency</span>
+                                <h3 class="text-xl font-bold text-slate-900">Pulse Digital</h3>
+                            </div>
+                            <div class="p-2 bg-blue-50 rounded-lg text-blue-600">
+                                <i data-lucide="layout" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed line-clamp-3">
+                            Founded and managed a creative agency helping brands establish their digital presence through cohesive visual identity and storytelling.
+                        </p>
+                        <div class="mt-auto flex flex-wrap gap-2 pt-4 border-t border-slate-50">
+                            <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded border border-slate-100">Founder</span>
+                            <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded border border-slate-100">Branding</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 group">
-                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
-                        <i data-lucide="briefcase" class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300"></i>
+                <!-- Project 2: Jewelry E-commerce -->
+                <div onclick="openModal('jewelry')" class="cursor-pointer group flex flex-col bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=800&q=80" alt="Jewelry E-commerce" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium flex items-center gap-2">
+                                <i data-lucide="plus-circle" class="w-5 h-5"></i> View Project Details
+                            </span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Jewelry E-commerce</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">Launched a complete jewelry business from concept to sales, handling Shopify setup and marketing.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">Shopify</span>
-                        <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">Product Marketing</span>
-                        <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">Business Dev</span>
+                    
+                    <div class="p-8 flex-grow flex flex-col">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <span class="text-purple-600 text-xs font-bold uppercase tracking-wider mb-2 block">E-commerce Business</span>
+                                <h3 class="text-xl font-bold text-slate-900">Jewelry Brand</h3>
+                            </div>
+                            <div class="p-2 bg-purple-50 rounded-lg text-purple-600">
+                                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed line-clamp-3">
+                            Launched a complete jewelry business from concept to sales, handling the full lifecycle from product sourcing to digital marketing.
+                        </p>
+                        <div class="mt-auto flex flex-wrap gap-2 pt-4 border-t border-slate-50">
+                            <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded border border-slate-100">Shopify</span>
+                            <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded border border-slate-100">Marketing</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 group">
-                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
-                        <i data-lucide="figma" class="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300"></i>
+                <!-- Project 3: Architecture Studios -->
+                <div onclick="openModal('arch')" class="cursor-pointer group flex flex-col bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80" alt="Architecture Website Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-medium flex items-center gap-2">
+                                <i data-lucide="plus-circle" class="w-5 h-5"></i> View Project Details
+                            </span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Architecture Studios</h3>
-                    <p class="text-slate-600 mb-4 leading-relaxed">Designed visual identities and websites for architecture firms, emphasizing clean lines and structure.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">UI/UX</span>
-                        <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">Web Design</span>
-                        <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">Visual Identity</span>
+                    
+                    <div class="p-8 flex-grow flex flex-col">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <span class="text-emerald-600 text-xs font-bold uppercase tracking-wider mb-2 block">UI/UX Design</span>
+                                <h3 class="text-xl font-bold text-slate-900">Architecture Studios</h3>
+                            </div>
+                            <div class="p-2 bg-emerald-50 rounded-lg text-emerald-600">
+                                <i data-lucide="figma" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed line-clamp-3">
+                            Designed visual identities and modern, structured websites for architecture firms, emphasizing clean lines and minimalism.
+                        </p>
+                        <div class="mt-auto flex flex-wrap gap-2 pt-4 border-t border-slate-50">
+                            <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded border border-slate-100">Figma</span>
+                            <span class="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded border border-slate-100">Web Design</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -336,6 +394,74 @@
         </div>
     </section>
 
+    <!-- Modal for Project Details -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        
+        <!-- Modal Panel -->
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <div class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl">
+                    
+                    <!-- Close Button -->
+                    <button onclick="closeModal()" class="absolute top-4 right-4 z-10 p-2 bg-white/50 hover:bg-white rounded-full transition-colors text-slate-800">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+
+                    <!-- Modal Content Container (Scrollable) -->
+                    <div class="max-h-[90vh] overflow-y-auto">
+                        <!-- Hero Image -->
+                        <div class="h-64 sm:h-80 w-full overflow-hidden relative bg-slate-100">
+                             <img id="modal-image" src="" alt="Project Cover" class="w-full h-full object-cover">
+                             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
+                                 <span id="modal-category" class="text-blue-300 font-bold uppercase text-xs tracking-wider mb-2 block">Category</span>
+                                 <h3 id="modal-title" class="text-3xl font-bold text-white">Project Title</h3>
+                             </div>
+                        </div>
+
+                        <div class="p-8">
+                            <!-- Description -->
+                            <div class="prose prose-slate max-w-none mb-8">
+                                <p id="modal-description" class="text-slate-600 text-lg leading-relaxed">
+                                    Project description goes here.
+                                </p>
+                            </div>
+
+                            <!-- Additional Info Grid -->
+                            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i> Key Deliverables
+                                    </h4>
+                                    <ul id="modal-deliverables" class="space-y-3">
+                                        <!-- Deliverables injected via JS -->
+                                    </ul>
+                                </div>
+                                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                                    <h4 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+                                        <i data-lucide="tag" class="w-5 h-5 text-blue-500"></i> Technologies & Skills
+                                    </h4>
+                                    <div id="modal-tags" class="flex flex-wrap gap-2">
+                                        <!-- Tags injected via JS -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mockup Gallery (Where you put more photos) -->
+                            <div>
+                                <h4 class="font-bold text-slate-900 mb-6 text-xl">Project Gallery & Mockups</h4>
+                                <div id="modal-gallery" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <!-- Gallery images injected via JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
@@ -343,7 +469,7 @@
         // Update Copyright Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Mobile Menu Toggle
+        // Mobile Menu Logic
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -351,7 +477,6 @@
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // Toggle icon between menu and x
             if (mobileMenu.classList.contains('hidden')) {
                 icon.setAttribute('data-lucide', 'menu');
             } else {
@@ -360,7 +485,6 @@
             lucide.createIcons();
         });
 
-        // Close mobile menu when a link is clicked
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -369,7 +493,6 @@
             });
         });
 
-        // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -379,6 +502,120 @@
                 navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-4');
                 navbar.classList.add('py-6');
             }
+        });
+
+        /* =========================================
+           PROJECT DATA - EDIT THIS SECTION
+           Add your own text and image URLs here!
+           ========================================= */
+        const projects = {
+            'pulse': {
+                title: "Pulse Digital",
+                category: "Creative Agency",
+                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
+                description: "Founded and managed a creative agency focused on helping brands establish their digital presence. We specialized in creating cohesive visual identities, engaging social media strategies, and high-conversion web designs. My role involved overseeing the entire client lifecycle, from initial consultation to final delivery.",
+                deliverables: [
+                    "Agency Management & Leadership",
+                    "Brand Identity Design",
+                    "Social Media Strategy",
+                    "Client Relations"
+                ],
+                tags: ["Founder", "Branding", "Strategy", "Management"],
+                // ADD YOUR MOCKUP IMAGES BELOW
+                gallery: [
+                    "https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
+                    // "assets/my-pulse-mockup-1.jpg", 
+                    // "assets/my-pulse-mockup-2.jpg"
+                ]
+            },
+            'jewelry': {
+                title: "Jewelry Brand",
+                category: "E-commerce Business",
+                image: "C:\Users\User\OneDrive\Desktop\portfolio\images\mockup elegant asset.png",
+                description: "A complete e-commerce venture launched from the ground up. I identified a market gap for minimalist jewelry, sourced suppliers, and built a custom Shopify store. The project required a deep dive into product photography, social media advertising (Facebook/Instagram Ads), and customer retention strategies.",
+                deliverables: [
+                    "Shopify Store Development",
+                    "Product Photography & Marketing",
+                    "Inventory Management",
+                    "Paid Advertising Campaigns"
+                ],
+                tags: ["Shopify", "E-commerce", "Marketing", "Business Dev"],
+                // ADD YOUR MOCKUP IMAGES BELOW
+                gallery: [
+                    "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1576158187540-529259f7864d?auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            'arch': {
+                title: "Architecture Studios",
+                category: "UI/UX Design",
+                image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80",
+                description: "Collaborated with architecture firms to translate their physical design philosophy into the digital realm. The goal was to create websites that felt spacious, structured, and modern—mirroring the architectural style. I utilized Figma for high-fidelity prototyping before moving to development.",
+                deliverables: [
+                    "High-Fidelity Prototyping (Figma)",
+                    "Visual Identity Systems",
+                    "Responsive Web Design",
+                    "User Experience Research"
+                ],
+                tags: ["Figma", "UI/UX", "Web Design", "Architecture"],
+                // ADD YOUR MOCKUP IMAGES BELOW
+                gallery: [
+                    "C:\Users\User\OneDrive\Desktop\portfolio\images\mockup elegant asset.png",
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+                ]
+            }
+        };
+
+        // Modal Functions
+        function openModal(projectId) {
+            const project = projects[projectId];
+            if (!project) return;
+
+            // Populate Text
+            document.getElementById('modal-title').textContent = project.title;
+            document.getElementById('modal-category').textContent = project.category;
+            document.getElementById('modal-description').textContent = project.description;
+            document.getElementById('modal-image').src = project.image;
+
+            // Populate Deliverables
+            const deliverablesList = document.getElementById('modal-deliverables');
+            deliverablesList.innerHTML = project.deliverables.map(item => 
+                `<li class="flex items-start gap-2 text-sm text-slate-600">
+                    <i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i> ${item}
+                </li>`
+            ).join('');
+
+            // Populate Tags
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = project.tags.map(tag => 
+                `<span class="text-xs text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-full">${tag}</span>`
+            ).join('');
+
+            // Populate Gallery
+            const galleryContainer = document.getElementById('modal-gallery');
+            galleryContainer.innerHTML = project.gallery.map(imgSrc => 
+                `<div class="rounded-lg overflow-hidden bg-slate-100 h-64 border border-slate-100">
+                    <img src="${imgSrc}" alt="Project screenshot" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                </div>`
+            ).join('');
+
+            // Show Modal
+            document.getElementById('project-modal').classList.remove('hidden');
+            document.body.classList.add('modal-open');
+            
+            // Re-render icons inside modal
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+            document.body.classList.remove('modal-open');
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
         });
     </script>
 </body>
